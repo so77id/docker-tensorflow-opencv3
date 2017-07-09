@@ -1,0 +1,32 @@
+FROM gcr.io/tensorflow/tensorflow:latest-py3
+MAINTAINER Miguel Rodriguez <m.rodriguezs1990@gmail.com>
+
+# Installing system libraries and programs
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        cmake \
+        git \
+        wget \
+        yasm \
+        libswscale-dev \
+        libtbb2 \
+        libtbb-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libtiff-dev \
+        libjasper-dev \
+        libavformat-dev \
+        libpq-dev \
+        && apt-get clean
+
+# Install OpenCV
+RUN git clone --depth 1 https://github.com/opencv/opencv.git /root/opencv && \
+    cd /root/opencv && \
+    mkdir build && \
+    cd build && \
+    cmake -DWITH_CUDA=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=OFF .. && \
+    make -j"$(nproc)"  && \
+    make install && \
+    ldconfig && \
+    echo 'ln /dev/null /dev/raw1394' >> ~/.bashrc
+
+CMD ["/bin/bash"]
