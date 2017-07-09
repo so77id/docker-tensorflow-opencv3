@@ -3,8 +3,8 @@ DOCKER_COMMAND=docker
 NVIDIA_DOCKER_COMMAND=nvidia-docker
 CPU_DOCKER_FILE=Dockerfile.cpu
 GPU_DOCKER_FILE=Dockerfile.gpu
-SVC_CPU=tf-opencv-cpu-py3
-SVC_GPU=tf-opencv-gpu-py3
+SVC_CPU=tensorflow-opencv-cpu-py3
+SVC_GPU=tensorflow-opencv-gpu-py3
 VERSION=v0.0.1
 REGISTRY_URL=so77id
 
@@ -27,6 +27,9 @@ run-gpu rg:
 	@$(NVIDIA_DOCKER_COMMAND) run -t -i $(REGISTRY_URL)/$(SVC_GPU):$(VERSION)
 upload-cpu uc:
 	@echo "[upload] Uploading cpu docker image..."
+	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC_CPU)
+upload-gpu uc:
+	@echo "[upload] Uploading gpu docker image..."
 	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC_GPU)
 clean c:
 	@echo "[clean] Cleaning docker images..."
