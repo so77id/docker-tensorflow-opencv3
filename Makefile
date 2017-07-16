@@ -5,7 +5,7 @@ CPU_DOCKER_FILE=Dockerfile.cpu
 GPU_DOCKER_FILE=Dockerfile.gpu
 SVC_CPU=tensorflow-opencv-cpu-py3
 SVC_GPU=tensorflow-opencv-gpu-py3
-VERSION=v0.0.1
+VERSION=v0.1.0
 REGISTRY_URL=so77id
 
 
@@ -28,7 +28,7 @@ run-gpu rg:
 upload-cpu uc:
 	@echo "[upload] Uploading cpu docker image..."
 	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC_CPU)
-upload-gpu uc:
+upload-gpu ug:
 	@echo "[upload] Uploading gpu docker image..."
 	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC_GPU)
 clean c:

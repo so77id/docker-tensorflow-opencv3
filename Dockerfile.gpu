@@ -1,32 +1,70 @@
 FROM gcr.io/tensorflow/tensorflow:latest-gpu-py3
 MAINTAINER Miguel Rodriguez <m.rodriguezs1990@gmail.com>
 
-# Installing system libraries and programs
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        cmake \
-        git \
-        wget \
-        yasm \
-        libswscale-dev \
-        libtbb2 \
-        libtbb-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libtiff-dev \
-        libjasper-dev \
-        libavformat-dev \
-        libpq-dev \
-        && apt-get clean
+ENV NUM_CORES 4
+
+WORKDIR /
 
 # Install OpenCV
-RUN git clone --depth 1 https://github.com/opencv/opencv.git /root/opencv && \
-    cd /root/opencv && \
-    mkdir build && \
-    cd build && \
-    cmake -DWITH_CUDA=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=OFF .. && \
-    make -j"$(nproc)"  && \
-    make install && \
-    ldconfig && \
-    echo 'ln /dev/null /dev/raw1394' >> ~/.bashrc
+RUN apt-get -y update -qq && \
+    apt-get -y install wget \
+                       unzip \
+
+                       # Required
+                       build-essential \
+                       cmake \
+                       git \
+                       pkg-config \
+                       libatlas-base-dev \
+                       libgtk2.0-dev \
+                       libavcodec-dev \
+                       libavformat-dev \
+                       libswscale-dev \
+
+                       # Optional
+                       libtbb2 libtbb-dev \
+                       libjpeg-dev \
+                       libpng-dev \
+                       libtiff-dev \
+                       libv4l-dev \
+                       libdc1394-22-dev
+
+    # Get OpenCV
+RUN git clone https://github.com/opencv/opencv.git &&\
+    cd opencv &&\
+    cd / &&\
+    # Get OpenCV contrib modules
+    git clone https://github.com/opencv/opencv_contrib &&\
+    cd opencv_contrib &&\
+    mkdir /opencv/build &&\
+    cd /opencv/build &&\
+
+    # Lets build OpenCV
+    cmake \
+      -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D INSTALL_C_EXAMPLES=OFF \
+      -D INSTALL_PYTHON_EXAMPLES=OFF \
+      -D OPENCV_EXTRA_MODULES_PATH=/opencv_contrib/modules \
+      -D BUILD_EXAMPLES=OFF \
+      -D BUILD_NEW_PYTHON_SUPPORT=ON \
+      -D BUILD_DOCS=OFF \
+      -D BUILD_TESTS=OFF \
+      -D BUILD_PERF_TESTS=OFF \
+      -D WITH_TBB=ON \
+      -D WITH_OPENMP=ON \
+      -D WITH_IPP=ON \
+      -D WITH_CSTRIPES=ON \
+      -D WITH_OPENCL=ON \
+      -D WITH_V4L=ON \
+      .. &&\
+    make -j$NUM_CORES &&\
+    make install &&\
+    ldconfig &&\
+
+    # Clean the install from sources
+    cd / &&\
+    rm -r /opencv &&\
+    rm -r /opencv_contrib
 
 CMD ["/bin/bash"]
