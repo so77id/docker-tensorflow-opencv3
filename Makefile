@@ -5,7 +5,7 @@ CPU_DOCKER_FILE=Dockerfile.cpu
 GPU_DOCKER_FILE=Dockerfile.gpu
 SVC_CPU=tensorflow-opencv-cpu-py3
 SVC_GPU=tensorflow-opencv-gpu-py3
-VERSION=v0.1.0
+VERSION=latest
 REGISTRY_URL=so77id
 
 
