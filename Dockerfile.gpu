@@ -47,7 +47,7 @@ RUN git clone https://github.com/opencv/opencv.git &&\
     git clone https://github.com/opencv/opencv_contrib &&\
     cd opencv_contrib &&\
     git checkout $OPENCV_VERSION &&\
-    mkdir /opencv/build &&\
+    mkdir -p /opencv/build &&\
     cd /opencv/build &&\
 
     # Lets build OpenCV
