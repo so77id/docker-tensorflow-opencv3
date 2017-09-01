@@ -13,7 +13,7 @@ In order to see what is going inside the docker we need to sync the displays wit
 `-e DISPLAY=${HOST_IP}:0` if you use **OSX systems**.
 
 
-zAlso, we will share the source code directories `-v=$(pwd)/..:$(pwd)/..` (this assumes you are doing an out-of-source build and you have a parent directory with the `build` and `src` as children). And we set the current directory as our working directory `-w=$(pwd)`.
+Also, we will share the source code directories `-v=$(pwd)/..:$(pwd)/..` (this assumes you are doing an out-of-source build and you have a parent directory with the `build` and `src` as children). And we set the current directory as our working directory `-w=$(pwd)`.
 
 CPU version:
 
@@ -25,7 +25,7 @@ CPU version:
 
 GPU version:
 
-    docker run -it --rm \
+    nvidia-docker run -it --rm \
       --env DISPLAY=$DISPLAY --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
       -v=$(pwd)/..:$(pwd)/.. -w=$(pwd) \
       tensorflow-opencv-gpu-py3 \
