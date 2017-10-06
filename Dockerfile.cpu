@@ -1,6 +1,7 @@
 FROM gcr.io/tensorflow/tensorflow:latest-py3
 MAINTAINER Miguel Rodriguez <m.rodriguezs1990@gmail.com>
 
+RUN pip3 install keras
 
 ENV OPENCV_VERSION 3.2.0
 ENV NUM_CORES 4
