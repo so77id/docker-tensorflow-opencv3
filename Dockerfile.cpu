@@ -86,6 +86,9 @@ RUN git clone https://github.com/opencv/opencv.git &&\
     rm -r /opencv &&\
     rm -r /opencv_contrib
 
+RUN apt-get -y install libgtk-3-dev \
+                       libboost-all-dev
+
 
 RUN pip3 install tflearn dlib
 
