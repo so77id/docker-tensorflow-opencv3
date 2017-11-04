@@ -38,7 +38,10 @@ RUN apt-get -y update -qq && \
                        libcanberra-gtk-module \
 
                        # Tools
-                       imagemagick
+                       imagemagick \
+
+                       # For use matplotlib.pyplot in python
+                       python3-tk
 
 WORKDIR /
     # Get OpenCV
@@ -84,5 +87,7 @@ RUN git clone https://github.com/opencv/opencv.git &&\
     cd / &&\
     rm -r /opencv &&\
     rm -r /opencv_contrib
+
+RUN pip3 install tflearn
 
 CMD ["/bin/bash"]
