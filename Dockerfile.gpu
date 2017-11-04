@@ -88,6 +88,6 @@ RUN git clone https://github.com/opencv/opencv.git &&\
     rm -r /opencv &&\
     rm -r /opencv_contrib
 
-RUN pip3 install tflearn
+RUN pip3 install tflearn dlib
 
 CMD ["/bin/bash"]
