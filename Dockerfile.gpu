@@ -93,4 +93,6 @@ RUN apt-get -y install libgtk-3-dev \
 
 RUN pip3 install tflearn dlib imutils
 
+RUN pip3 install h5py
+
 CMD ["/bin/bash"]
