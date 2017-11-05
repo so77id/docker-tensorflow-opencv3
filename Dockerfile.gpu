@@ -91,6 +91,6 @@ RUN git clone https://github.com/opencv/opencv.git &&\
 RUN apt-get -y install libgtk-3-dev \
                        libboost-all-dev
 
-RUN pip3 install tflearn dlib
+RUN pip3 install tflearn dlib imutils
 
 CMD ["/bin/bash"]
