@@ -90,8 +90,6 @@ RUN apt-get -y install libgtk-3-dev \
                        libboost-all-dev
 
 
-RUN pip3 install tflearn dlib imutils
-
-RUN pip3 install h5py
+RUN pip3 install tflearn dlib imutils h5py tqdm
 
 CMD ["/bin/bash"]
