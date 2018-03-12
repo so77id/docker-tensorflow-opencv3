@@ -41,7 +41,8 @@ RUN apt-get -y update -qq && \
                        imagemagick \
 
                        # For use matplotlib.pyplot in python
-                       python3-tk
+                       python3-tk \
+		       python-tk
 
 WORKDIR /
     # Get OpenCV
