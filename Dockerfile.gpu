@@ -95,4 +95,6 @@ RUN pip3 install tflearn dlib imutils
 
 RUN pip3 install h5py
 
+RUN pip3 install jupyterlab
+
 CMD ["/bin/bash"]
