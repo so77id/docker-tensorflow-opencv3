@@ -27,10 +27,10 @@ run-gpu rg:
 	@$(NVIDIA_DOCKER_COMMAND) run -t -i $(REGISTRY_URL)/$(SVC):$(VERSION_GPU)
 upload-cpu uc:
 	@echo "[upload] Uploading cpu docker image..."
-	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC)
+	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC):$(VERSION_CPU)
 upload-gpu ug:
 	@echo "[upload] Uploading gpu docker image..."
-	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC)
+	@$(DOCKER_COMMAND) push $(REGISTRY_URL)/$(SVC):$(VERSION_GPU)
 clean c:
 	@echo "[clean] Cleaning docker images..."
 	@$(DOCKER_COMMAND) rmi -f $(REGISTRY_URL)/$(SVC):$(VERSION_CPU)
