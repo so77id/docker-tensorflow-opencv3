@@ -1,8 +1,6 @@
 FROM tensorflow/tensorflow:1.7.0-py3
 MAINTAINER Miguel Rodriguez <m.rodriguezs1990@gmail.com>
 
-RUN pip3 install keras
-
 ENV OPENCV_VERSION 3.2.0
 ENV NUM_CORES 4
 
@@ -91,10 +89,7 @@ RUN apt-get -y install libgtk-3-dev \
                        libboost-all-dev
 
 
-RUN pip3 install tflearn dlib imutils h5py tqdm
 
-RUN pip3 install mnist
-
-RUN pip3 install jupyterlab
+RUN pip3 install tflearn dlib imutils h5py tqdm jupyterlab urllib3 mnist keras
 
 CMD ["/bin/bash"]
