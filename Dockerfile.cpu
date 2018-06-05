@@ -94,5 +94,7 @@ RUN python3 -c 'import moviepy.editor as mpy'
 
 RUN pip3 install tflearn dlib imutils h5py tqdm jupyterlab urllib3 mnist keras
 
+RUN pip3 install git+https://github.com/wookayin/tensorflow-plot.git@master
+
 
 CMD ["/bin/bash"]
