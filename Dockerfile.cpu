@@ -96,6 +96,6 @@ RUN pip3 install tflearn dlib imutils h5py tqdm jupyterlab urllib3 mnist keras
 
 RUN pip3 install git+https://github.com/wookayin/tensorflow-plot.git@master
 
-pip3 install scikit-image
+RUN pip3 install scikit-image
 
 CMD ["/bin/bash"]
