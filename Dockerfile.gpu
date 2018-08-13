@@ -96,6 +96,7 @@ RUN pip3 install dlib
 RUN pip3 install imutils
 RUN pip3 install h5py
 RUN pip3 install tqdm
+RUN pip3 install jupyterlab
 RUN pip3 install urllib3
 RUN pip3 install mnist
 RUN pip3 install keras
