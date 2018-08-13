@@ -88,6 +88,15 @@ RUN git clone https://github.com/opencv/opencv.git &&\
 RUN apt-get -y install libgtk-3-dev \
                        libboost-all-dev
 
-RUN pip3 install tflearn dlib imutils h5py tqdm jupyterlab urllib3 mnist keras scikit-image
+RUN pip3 install tflearn
+RUN pip3 install dlib
+RUN pip3 install imutils
+RUN pip3 install h5py
+RUN pip3 install tqdm
+RUN pip3 install jupyterlab
+RUN pip3 install urllib3
+RUN pip3 install mnist
+RUN pip3 install keras
+RUN pip3 install scikit-image
 
 CMD ["/bin/bash"]
