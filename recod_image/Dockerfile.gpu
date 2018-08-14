@@ -1,15 +1,9 @@
 FROM so77id/tensorflow-opencv-py3:latest-gpu
 MAINTAINER Miguel Rodriguez <m.rodriguezs1990@gmail.com>
 
-RUN groupadd recod --gid 1000
-RUN useradd mrodriguez --uid 10177 --gid 0 -G recod
-
 RUN pip3 install moviepy requests
 RUN python3 -c 'import moviepy.editor as mpy'
 
 RUN pip3 install git+https://github.com/wookayin/tensorflow-plot.git@master
-
-USER mrodriguez
-RUN python3 -c 'import moviepy.editor as mpy'
 
 CMD ["/bin/bash"]
