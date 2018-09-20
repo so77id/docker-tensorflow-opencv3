@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.10.1-py3
+FROM tensorflow/tensorflow:1.9.0-py3
 MAINTAINER Miguel Rodriguez <m.rodriguezs1990@gmail.com>
 
 ENV OPENCV_VERSION 3.4.3
