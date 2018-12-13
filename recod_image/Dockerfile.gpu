@@ -8,4 +8,6 @@ RUN pip3 install git+https://github.com/wookayin/tensorflow-plot.git@master
 
 RUN pip install slackclient
 
+RUN pip3 install torch torchvision
+
 CMD ["/bin/bash"]
