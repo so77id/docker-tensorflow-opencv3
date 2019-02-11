@@ -1,7 +1,7 @@
 FROM so77id/tensorflow-opencv-py3:latest-gpu
 MAINTAINER Miguel Rodriguez <m.rodriguezs1990@gmail.com>
 
-RUN pip3 install moviepy requests
+RUN pip3 install moviepy requests imageio==2.4.1
 RUN python3 -c 'import moviepy.editor as mpy'
 
 RUN pip3 install git+https://github.com/wookayin/tensorflow-plot.git@master
@@ -11,5 +11,9 @@ RUN pip install slackclient
 RUN pip3 install torch torchvision
 
 RUN pip3 install tensorboardX
+
+RUN git clone https://github.com/so77id/torch_videovision.git
+
+ENV PYTHONPATH=$PYTHONPATH:/torch_videovision
 
 CMD ["/bin/bash"]
