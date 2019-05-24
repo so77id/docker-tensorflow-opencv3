@@ -16,4 +16,8 @@ RUN git clone https://github.com/so77id/torch_videovision.git
 
 ENV PYTHONPATH=$PYTHONPATH:/torch_videovision
 
+RUN pip3 install sp
+
+RUN pip3 install dgl
+
 CMD ["/bin/bash"]
