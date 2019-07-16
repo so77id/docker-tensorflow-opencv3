@@ -18,4 +18,8 @@ RUN pip3 install --upgrade google-api-python-client google-auth-httplib2 google-
 
 ENV PYTHONPATH=$PYTHONPATH:/torch_videovision
 
+RUN pip3 install sp
+
+RUN pip3 install dgl
+
 CMD ["/bin/bash"]
