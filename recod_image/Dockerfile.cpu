@@ -14,12 +14,12 @@ RUN pip3 install tensorboardX
 
 RUN git clone https://github.com/so77id/torch_videovision.git
 
-RUN pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
-
 ENV PYTHONPATH=$PYTHONPATH:/torch_videovision
 
 RUN pip3 install sp
 
 RUN pip3 install dgl
+
+RUN pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 CMD ["/bin/bash"]
